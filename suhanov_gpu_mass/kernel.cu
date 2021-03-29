@@ -227,7 +227,6 @@ __global__ void lambert(const float* r0, const float* rk, float *dt, int revs, i
 	int tid = blockIndex * blockDim.x * blockDim.y * blockDim.z + ThreadIndex;
 	double t = dt[tid];
 
-	printf("Hello");
 	if (t < 0)
 	{
 		printf("Time is invalid");
@@ -303,8 +302,6 @@ __global__ void lambert(const float* r0, const float* rk, float *dt, int revs, i
 	       v1[tid * off + i] = 1. / g * (R2[i] - f * R1[i]);
 	       v2[tid * off + i] = df * R1[i] + dg * v1[tid * off + i];
 	   }
-	
-	   printf("iter = %i\n", iter);
 }
 
 double** reading_data(char* name_file, double** DATA, char ADD[][1000], int ignore, int& SIZE1, int SIZE2) {
